@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arkanoid VH20</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: white;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 2.5em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    .game-container {
+      position: relative;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+      background: #000;
+    }
+    .score {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 1.5em;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    }
+    .lives {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5em;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    }
+    .game-over {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      background: rgba(0,0,0,0.8);
+      padding: 20px;
+      border-radius: 10px;
+      display: none;
+    }
+    .game-over h2 {
+      margin: 0 0 10px 0;
+    }
+    .game-over button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background: #0095DD;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .start-screen {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      background: rgba(0,0,0,0.9);
+      padding: 30px;
+      border-radius: 15px;
+      display: block;
+    }
+    .start-screen h2 {
+      margin: 0 0 20px 0;
+      font-size: 2em;
+    }
+    .start-screen p {
+      margin: 10px 0;
+    }
+    .start-screen button {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      background: #0095DD;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    .start-screen button:hover {
+      background: #007BBD;
+    }
+    .high-score {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.2em;
+      font-weight: bold;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    }
+  </style>
+  <style media="(max-width: 900px)">
+    canvas {
+      width: 100%;
+      height: auto;
+    }
+    .game-container {
+      max-width: 90vw;
+    }
+    h1 {
+      font-size: 2em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Arkanoid vH20</h1>
+  <div class="game-container">
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
+    <div class="score">Puntuación: <span id="score">0</span></div>
+    <div class="lives">Vidas: <span id="lives">3</span></div>
+    <div class="high-score">Récord: <span id="highScore">0</span></div>
+    <div class="start-screen" id="startScreen">
+      <h2>¡Bienvenido a Arkanoid vH20!</h2>
+      <p>Usa el mouse o las flechas para mover la plataforma.</p>
+      <p>Rompe todos los ladrillos para ganar.</p>
+      <p>¡Buena suerte!</p>
+      <button onclick="startGame()">Comenzar Juego</button>
+    </div>
+    <div class="game-over" id="gameOver">
+      <h2>¡Juego Terminado!</h2>
+      <p>Puntuación Final: <span id="finalScore">0</span></p>
+      <button onclick="restartGame()">Jugar de Nuevo</button>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
